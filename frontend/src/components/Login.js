@@ -1,11 +1,16 @@
-import { useRef, useState, useEffect, useContext } from "react";
-import Authcontext from "./context/AuthProvider";
-import axios from "./api/axios";
+import { useRef, useState, useEffect } from "react";
+import useAuth from "../hooks/useAuth";
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import axios from "../api/axios";
 
 const LOGIN_URL = '/auth';
 
 const Login = () => {
-    const { setAuth } = useContext(Authcontext);
+    const { setAuth } = useAuth();
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const userRef = useRef();
     const errRef = useRef();
@@ -36,7 +41,7 @@ const Login = () => {
             );
             console.log(response);
             console.log(response.accessToken);
-            
+
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles; //should be an aray
 
@@ -44,7 +49,7 @@ const Login = () => {
 
             setUser('');
             setPwd('');
-            setSuccess(true);
+            setSuccess(from, { replace: true });
         } catch (error) {
             if (!error?.response) {
                 setErrMsg('No Server Response!');

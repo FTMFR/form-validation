@@ -7,13 +7,13 @@ const LinkPage = () => {
             <h1>Links</h1>
             <br />
             <h2>Public</h2>
-            <link to='/login'>Login</link>
-            <link to='/register'>Register</link>
+            <Link to='/login'>Login</Link>
+            <Link to='/register'>Register</Link>
             <br />
             <h2>Private</h2>
-            <link to='/'>Home</link>
-            <link to='/editor'>Editor Page</link>
-            <link to='/admin'>Admin Page</link>
+            <Link to='/'>Home</Link>
+            <Link to='/editor'>Editor Page</Link>
+            <Link to='/admin'>Admin Page</Link>
         </section>
     );
 };

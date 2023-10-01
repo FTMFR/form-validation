@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import Register from "./Register";
-import Login from "./Login";
+import Register from './components/Register';
+import Login from './components/Login';
 import Layout from "./components/Layout";
 import LinkPage from './components/LinkPage';
 import Unauthorized from './components/Unauthorized';
@@ -8,7 +8,8 @@ import Home from './components/Home';
 import Editor from './components/Editor';
 import Admin from './components/Admin';
 import Lounge from './components/Lounge';
-import Missing from './components/missing';
+import Missing from './components/Missing';
+import RequireAuth from './components/RequireAuth';
 
 
 
@@ -23,10 +24,12 @@ const App = () => {
         <Route path='unauthorized' element={<Unauthorized />} />
 
         {/* We Want Protect This Roles */}
-        <Route path='/' element={<Home />} />
-        <Route path='editor' element={<Editor />} />
-        <Route path='admin' element={<Admin />} />
-        <Route path='lounge' element={<Lounge />} />
+        <Route element={<RequireAuth />}>
+          <Route path='/' element={<Home />} />
+          <Route path='editor' element={<Editor />} />
+          <Route path='admin' element={<Admin />} />
+          <Route path='lounge' element={<Lounge />} />
+        </Route>
 
         {/* Catch All */}
         <Route path='*' element={<Missing />} />
