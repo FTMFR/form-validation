@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import {   useLocation } from 'react-router-dom';
 import axios from "../api/axios";
 
 const LOGIN_URL = '/auth';
@@ -8,7 +8,7 @@ const LOGIN_URL = '/auth';
 const Login = () => {
     const { setAuth } = useAuth();
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
@@ -72,7 +72,7 @@ const Login = () => {
                     <h1>You Are Logged In!</h1>
                     <br />
                     <p>
-                        <a href="#">Go to Home</a>
+                        <a href="/">Go to Home</a>
                     </p>
                 </section>
             ) : (
@@ -109,7 +109,7 @@ const Login = () => {
                     <p>
                         Need an registered? <br />
                         <span className="line">
-                            <a href="#">sign Up</a>
+                            <a href="/">sign Up</a>
                         </span>
                     </p>
                 </section>
