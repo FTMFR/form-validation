@@ -1,18 +1,16 @@
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom"
 
 const Lounge = () => {
     return (
         <section>
             <h1>The Lounge</h1>
             <br />
-            <p>Admin and Editors Can Hang Out Here.</p>
-            <div className='flexGrow'>
-                <Link to='/'>Home</Link>
+            <p>Admins and Editors can hang out here.</p>
+            <div className="flexGrow">
+                <Link to="/">Home</Link>
             </div>
         </section>
-    );
-};
+    )
+}
 
-
-export default Lounge;
+export default Lounge
